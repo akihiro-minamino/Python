@@ -1,5 +1,17 @@
 \documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
 \usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\usepackage{listings, jlisting}
+\renewcommand{\lstlistingname}{リスト}
+\lstset{
+%language = R,
+%language = C++,   
+breaklines = true,
+numbers = left,
+frame = tbrl,
+tabsize = 4,
+basicstyle =\ttfamily,
+captionpos = t
+}
 \geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
 %\geometry{landscape}                		% Activate for rotated page geometry
 %\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
@@ -39,23 +51,27 @@ Pythonでは、10進以外に3種類の基数を使ってリテラル整数を�
 \item 0oは8進（基数8）
 \item 0xは16進（基数16）
 \end{itemize}
-インタープリターは、10進整数として、整数を表示する。\\
-\verb|>>> 10|\\
-\verb|10|\\
-\verb|>>> 0b10|\\
-\verb|2|\\
-\verb|>>> 0x10|\\
-\verb|16|
+インタープリターは、10進整数として、整数を表示する。
+\begin{lstlisting}
+>>> 10
+10
+>>> 0b10
+2
+>>> 0x10
+16
+\end{lstlisting}
 
 \subsection{型の変換}
 Pythonの整数以外のデータ型を整数に変換するには、int()関数を使う。
 この関数は整数部だけを残し、小数部を切り捨てる。\\
 　\\
-int()は、数字でできた文字列を整数に変換する。しかし、小数点や指数部を含む文字列は処理しない。\\
-\verb|>>> int('98.6')|\\
-\verb|ValueError: ...|\\
-\verb|>>> int('1.0e4')|\\
-\verb|ValueError: ...|
+int()は、数字でできた文字列を整数に変換する。しかし、小数点や指数部を含む文字列は処理しない。
+\begin{lstlisting}
+>>> int('98.6')
+ValueError: ...
+>>> int('1.0e4')
+ValueError: ...
+\end{lstlisting}
 
 \subsection{文字列}
 文字列は、文字のシーケンスである。\\
@@ -65,11 +81,13 @@ int()は、数字でできた文字列を整数に変換する。しかし、小
   \\
 Python文字列は、シングルクォートかダブルクォートで文字を囲んで作る。
 どちらのクォートを使っても、Pythonはまったく同じように扱う。
-2種類のクォート文字を使えるようにしている理由は、クォート文字を含む文字列を作りやすくするためである。ダブルクォートで文字列を作るときは、文字列内にシングルクォートを入れることができ、シングルクォートで文字列を作るときは、文字列内にダブルクォートを入れることができる。\\
-\verb|>>> "Nay,' said the naysayer."|\\
-\verb|"Nay,' said the naysayer."|\\
-\verb|>>> 'The rare double quote in captivity: ".'|\\
-\verb|'The rare double quote in captivity: ".'|\\
+2種類のクォート文字を使えるようにしている理由は、クォート文字を含む文字列を作りやすくするためである。ダブルクォートで文字列を作るときは、文字列内にシングルクォートを入れることができ、シングルクォートで文字列を作るときは、文字列内にダブルクォートを入れることができる。
+\begin{lstlisting}
+>>> "Nay,' said the naysayer."
+"Nay,' said the naysayer."
+>>> 'The rare double quote in captivity: ".'
+'The rare double quote in captivity: ".'
+\end{lstlisting}
 
 
 \end{document}  
