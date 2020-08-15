@@ -30,6 +30,37 @@ captionpos = t
 
 \begin{document}
 \maketitle
+\section{リテラル}
+リテラルとは、Pythonのプログラムに直接記述された値です。
+以下の種類がある。
+
+\subsection{組み込み定数}
+\begin{itemize}
+\item True: 真を表すbool型の値。整数に変換すると1になる。
+\item Flase: 偽を表すbool型の値。整数に変換すると0になる。
+\item None: 存在しないことを表すNoneType型の値。
+\item その他の組み込み定数（NotImplementedなど）
+\end{itemize}
+
+\section{文字列リテラル}
+\begin{itemize}
+\item シングルクォーテーションまたはダブルクォーテーションで囲む。改行を直接含めたいといは、三重引用符（三重シングルクォーテーションまたは三重ダブルクォーテーション）を使う。
+\end{itemize}
+
+\section{数値リテラル}
+\begin{itemize}
+\item 整数や浮動小数点数などの数字。
+\end{itemize}
+
+\section{その他}
+\begin{itemize}
+\item リスト
+\item タプル
+\item 辞書
+\item 集合
+\end{itemize}
+
+
 \section{変数}
 \subsection{変数、名前、オブジェクト}
 Python変数の重要なポイントは、変数はただの名前だということである。
@@ -72,13 +103,33 @@ ValueError: ...
 >>> int('1.0e4')
 ValueError: ...
 \end{lstlisting}
+　\\
+他のデータ型の値をfloatに変換するには、\verb|float()|関数を使う。
+\begin{lstlisting}
+>>> float(True)
+1.0
+>>> float(False)
+0.0
+>>> float(98)
+98.0
+>>> float('99')
+99.0
+>>> float('98.6')
+98.6
+>>> float('-1.5')
+-1.5
+>>> float('1.0e4')
+10000.0
+\end{lstlisting}
+
 
 \subsection{文字列}
 文字列は、文字のシーケンスである。\\
  \\
  他の言語と異なり、Pythonの文字列はイミュータブルである。
  つまり、文字列をその場で書き換えることができない。\\
-  \\
+ 
+ \subsubsection{クォートを使った作成}
 Python文字列は、シングルクォートかダブルクォートで文字を囲んで作る。
 どちらのクォートを使っても、Pythonはまったく同じように扱う。
 2種類のクォート文字を使えるようにしている理由は、クォート文字を含む文字列を作りやすくするためである。ダブルクォートで文字列を作るときは、文字列内にシングルクォートを入れることができ、シングルクォートで文字列を作るときは、文字列内にダブルクォートを入れることができる。
@@ -87,7 +138,195 @@ Python文字列は、シングルクォートかダブルクォートで文字�
 "Nay,' said the naysayer."
 >>> 'The rare double quote in captivity: ".'
 'The rare double quote in captivity: ".'
+>>> 'A "two by four" is actually 1 1/2" X 3 1/2".'
+'A "two by four" is actually 1 1/2" X 3 1/2".'
+>>> "'There's the man that shot my paw!' cried the limping hound."
+"'There's the man that shot my paw!' cried the limping hound."
 \end{lstlisting}
+3個のシングルクォート（\verb|'''|）や3個のダブルクォート（\verb|"""|）を使うこともできる。
+\begin{lstlisting}
+>>> '''Boom!'''
+'Boom'
+>>> """Eek!"""
+'Eek!'
+\end{lstlisting}
+トリプルクォートは、次のような複数行文字列を作るために使われる。
+\begin{lstlisting}
+>>> poem = '''There was a Young Lady of Norway,
+... Who casually sat in a doorway;
+... When the door squeezed her flat,
+... She exclaimed, "What of that?"
+... This courageous Young Lady of Norway.'''
+>>> print(poem)
+There was a Young Lady of Norway,
+Who casually sat in a doorway;
+When the door squeezed her flat,
+She exclaimed, "What of that?"
+This courageous Young Lady of Norway.
+\end{lstlisting}
+トリプルクォートのなかに複数行の文字列を入れると、その文字列には
+改行文字も残される。先頭や末尾にスペースがある場合、それらも残る。
+\begin{lstlisting}
+>>> poem2 = '''I do not like thee, Doctor Fell.
+...     The reason why, I cannot tell.
+...     But this I know, and know full well:
+...     I do not like thee, Doctor Fell.
+... '''
+>>> print(poem2)
+I do not like thee, Doctor Fell.
+    The reason why, I cannot tell.
+    But this I know, and know full well:
+    I do not like thee, Doctor Fell.
+
+>>> poem2
+'I do not like thee, Doctor Fell.\n    The reason why, I cannot tell.\n    But this I know, and know full well:\n    I do not like thee, Doctor Fell.\nprint(poem2)\n'
+\end{lstlisting}
+\verb|print()|は文字列からクォートを取り除き、表示する項目の間にスペースを追加し、末尾に改行を追加し、文字列の内容を表示する。
+　\\
+文字列には空文字列がある。文字がひとつも含まれていない文字列だが、完全に有効な文字列として扱われる。空文字は、クォートを使って以下のように作る。
+\begin{lstlisting}
+>>> ''
+''
+>>> ""
+''
+>>> ''''''
+''
+>>> """"""
+''
+>>>
+\end{lstlisting}
+空文字は、他の文字列から新しく文字列を組み立てたいときに、まず白紙のノートが必要になる、
+\begin{lstlisting}
+>>> bottles = 99
+>>> base = ''
+>>> base += 'current inventory: ' #在庫
+>>> base += str(bottles)
+>>> base
+'current inventory: 99'
+\end{lstlisting}
+
+\subsubsection{str()を使った型変換}
+\verb|str()|関数を使うと、他のデータ型を文字列に変換できる。
+\begin{lstlisting}
+>>> str(98.6)
+'98.6'
+>>> str(1.0e4)
+'10000.0'
+>>> str(True)
+'True'
+\end{lstlisting}
+
+\subsubsection{$\backslash$によるエスケープ}
+特定の文字の前にバックスラッシュ（$\backslash$）を入れると、特別な意味になる。
+もっともよく使われるエスケープシーケンスは、改行の意味になる\verb|\n|だ。
+\begin{lstlisting}
+>>> palindrome = 'A man,\nA plan,\nA canal:\nPanama.'
+>>> print(palindrome)
+A man,
+A plan,
+A canal:
+Panama.
+\end{lstlisting}
+テキストの位置を揃えるために\verb|\t|というエスケープシーケンスもよく使う。
+\begin{lstlisting}
+>>> print('\tabc')
+	abc
+>>> print('a\tbc')
+a	bc
+>>> print('ab\tc')
+ab	c
+>>> print('abc\t')
+abc
+\end{lstlisting}
+最後の文字列の末尾にタブ文字が含まれるが、目には見えない。\\
+　\\
+文字列を囲むために使っているシングルクォート、ダブルクォートを文字列内でもリテラルとして使いたい場合は、\verb|\'|と\verb|\"|が必要になる。
+\begin{lstlisting}
+>>> testimony = "\"I did nothing!\" he said. \"Not that either! Or the other thing.\""
+>>> print(testimony)
+"I did nothing!" he said. "Not that either! Or the other thing."
+>>> fact = "The world's largest rubber duck was 54'2\" by 65'7\" by 105'"
+>>> print(fact)
+The world's largest rubber duck was 54'2" by 65'7" by 105'
+\end{lstlisting}
+リテラルのバックスラッシュが必要な場合には、バックスラッシュをふたつ重ねる。
+\begin{lstlisting}
+>>> speech = 'Today we honor our friend, the backslash: \\.'
+>>> print(speech)
+Today we honor our friend, the backslash: \.
+\end{lstlisting}
+
+\subsubsection{+による連結}
+Pythonでは、+演算子を使えば、リテラル文字列、文字列変数を連結できる。
+\begin{lstlisting}
+>>> 'Release the kraken! ' + 'At once!'
+'Release the kraken! At once!'
+\end{lstlisting}
+リテラル文字列の場合は、順に並べるだけでも連絡できる（文字列変数はできない）。
+\begin{lstlisting}
+>>> "My word! " "A gentleman caller!"
+'My word! A gentleman caller!'
+\end{lstlisting}
+文字列の連結では、Pythonは自動的にスペースを追加しない。
+それに対し、\verb|print()|関数は、各引数の間にはスペースを挿入し、末尾に改行を追加する。
+\begin{lstlisting}
+>>> a = 'Duck.'
+>>> b = a
+>>> c = 'Grey Duck!'
+>>> a + b + c
+'Duck.Duck.Grey Duck!'
+>>> print(a, b, c)
+Duck. Duck. Grey Duck!
+\end{lstlisting}
+
+\subsubsection{*による繰り返し}
+*演算子を使うと、文字列を繰り返すことができる。
+\begin{lstlisting}
+>>> a = 'Duck.'
+>>> start = 'Na ' * 4 + '\n'
+>>> middle = 'Hey ' * 3 + '\n'
+>>> end = 'Goodbye.'
+>>> print(start + start + middle + end)
+Na Na Na Na 
+Na Na Na Na 
+Hey Hey Hey 
+Goodbye.
+\end{lstlisting}
+
+\subsubsection{[ ]による文字の抽出}
+文字列のなかのひとつの文字を取り出したいときは、文字列名の後ろに[ ]で囲んだ
+文字のオフセットを各。先頭の文字（もっとも左）のオフセットは0、その右が1と数える。
+末尾（もっとも右）の文字のオフセットは-1えも指定できる。
+右端の左は-2、されにその左は-3のように続く。
+\begin{lstlisting}
+>>> letters = 'abcdefghijklmnopqrstuvwxyz'
+>>> letters[0]
+'a'
+>>> letters[1]
+'b'
+>>> letters[-1]
+'z'
+>>> letters[-2]
+'y'
+>>> letters[25]
+'z'
+>>> letters[5]
+\end{lstlisting}
+文字列の長さ以上のオフセットを指定すると、例外が起きる。
+\begin{lstlisting}
+>>> letters[100]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module
+\end{lstlisting}
+このインデックス参照は、他のシーケンス型（リストやタプル）でも機能する。\\
+ \\
+ 文字列はイミュータブルなので、文字列に直接文字を挿入したり、
+ 指定したインデックスの位置の文字を書き換えたりすることはできない。
+ 
+\subsubsection{[start:end:step]によるスライス}
+スライスを使えば、文字列から部分文字列（文字列の一部）を取り出すことができる。
+スライスは、[ ]と先頭オフセット（start）、末尾オフセット（end）、ステップ（step）
+で定義する。
 
 
 \end{document}  
