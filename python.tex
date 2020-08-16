@@ -42,17 +42,17 @@ captionpos = t
 \item その他の組み込み定数（NotImplementedなど）
 \end{itemize}
 
-\section{文字列リテラル}
+\subsection{文字列リテラル}
 \begin{itemize}
 \item シングルクォーテーションまたはダブルクォーテーションで囲む。改行を直接含めたいといは、三重引用符（三重シングルクォーテーションまたは三重ダブルクォーテーション）を使う。
 \end{itemize}
 
-\section{数値リテラル}
+\subsection{数値リテラル}
 \begin{itemize}
 \item 整数や浮動小数点数などの数字。
 \end{itemize}
 
-\section{その他}
+\subsection{その他}
 \begin{itemize}
 \item リスト
 \item タプル
@@ -327,6 +327,51 @@ Traceback (most recent call last):
 スライスを使えば、文字列から部分文字列（文字列の一部）を取り出すことができる。
 スライスは、[ ]と先頭オフセット（start）、末尾オフセット（end）、ステップ（step）
 で定義する。
-
+\begin{itemize}
+\item \verb|[ : ]|は、先頭から末尾までのシーケンス全体を抽出する。
+\item \verb|[ start: ]|は、\verb|start|オフセットから末尾までのシーケンスを抽出する。
+\item \verb|[ :end ]|は、先頭から\verb|end-1|オフセットまでのシーケンスを抽出する。
+\item \verb|[ start:end ]|は、\verb|start|オフセットから\verb|end-1|オフセットまでのシーケンスを抽出する。
+\item \verb|[ start:end:step ]|は、\verb|step|文字毎に\verb|start|オフセットから\verb|end-1|オフセットまでのシーケンスを抽出する。
+\end{itemize}
+\begin{lstlisting}
+>>> letters = 'abcdefghijklmnopqrstuvwxyz'
+>>> letters[ : ]
+'abcdefghijklmnopqrstuvwxyz'
+>>> letters[20:]
+'uvwxyz'
+>>> letters[10:]
+'klmnopqrstuvwxyz'
+>>> letters[12:15]
+'mno'
+>>> letters[-3:]
+'xyz'
+>>> letters[18:-3]
+'stuvw'
+>>> letters[-6:-3]
+'uvw'
+>>> letters[::7]
+'ahov'
+>>> letters[4:20:3]
+'ehknqt'
+>>> letters[19::4]
+'tx'
+>>> letters[:21:5]
+'afkpu'
+\end{lstlisting}
+Pythonでは、末尾の指定は実際のオフセットよりもひとつ先でなければならない。\\
+ \\
+ ステップサイズとして負数を指定すると、この便利なスライスは逆にステップしていく。
+ \begin{lstlisting}
+>>> letters = 'abcdefghijklmnopqrstuvwxyz'
+>>> letters[-1::-1]
+'zyxwvutsrqponmlkjihgfedcba'
+>>> letters[::-1]
+'zyxwvutsrqponmlkjihgfedcba'
+ \end{lstlisting}
+ 
+ \subsubsection{len()による長さの取得}
+ p.76
+ 
 
 \end{document}  
