@@ -371,7 +371,33 @@ Pythonでは、末尾の指定は実際のオフセットよりもひとつ先�
  \end{lstlisting}
  
  \subsubsection{len()による長さの取得}
- p.76
+ Pythonの組み込み関数\verb|len()|は、文字列内の文字数を数える。
+ \begin{lstlisting}
+ >>> letters = 'abcdefghijklmnopqrstuvwxyz'
+>>> len(letters)
+26
+>>> empty = ''
+>>> len(empty)
+0
+ \end{lstlisting}
+ 
+ \subsubsection{split()による分割}
+ 文字列専用関数を使うときには、文字列の名前をタイプしてからドット、さらに関数名をタイプし、関数が必要とする引数を指定する。つまり、\verb|string.function(arguments)|という形式である。\\
+ 文字列関数\verb|split()|は、セパレータに基づいて文字列を分割し、部分文字列のリストを作る。
+ \begin{lstlisting}
+>>> todos = 'get gloves, get mask, get cat vitamins, call ambulance'
+>>> todos.split(',')
+['get gloves', ' get mask', ' get cat vitamins', ' call ambulance']
+ \end{lstlisting}
+ セパレータを指定していない\verb|split()|は、セパレーターとして空白文字(改行、スペース、タブ)のシーケンスを使う。
+ \begin{lstlisting}
+>>> todos.split()
+['get', 'gloves,', 'get', 'mask,', 'get', 'cat', 'vitamins,', 'call', 'ambulance']
+\end{lstlisting}
+ Pythonは括弧の有無で関数呼び出しかどうかを判断しているので、引数なしで\verb|split|を呼び出すときでも括弧は必要。
+ 
+ \subsection{join()による結合}
+ 
  
 
 \end{document}  
