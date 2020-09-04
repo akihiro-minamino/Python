@@ -397,7 +397,34 @@ Pythonでは、末尾の指定は実際のオフセットよりもひとつ先�
  Pythonは括弧の有無で関数呼び出しかどうかを判断しているので、引数なしで\verb|split|を呼び出すときでも括弧は必要。
  
  \subsection{join()による結合}
+ \verb|join()|関数は、まず文字列に「糊としてはさむ文字列」を指定してから、結合する文字列のリストを指定する。
+ 次の例では、カンマとスペースを間に挟んでリストに含まれている名前を結合する。
+  \begin{lstlisting}
+  >>> crypto_list = ['Yeti', 'Bigfoot', 'Loch Ness Monster']
+>>> crypto_string = ', '.join(crypto_list)
+>>> print('Found and signing book deals;', crypto_string)
+Found and signing book deals; Yeti, Bigfoot, Loch Ness Monster
+  \end{lstlisting}
+  
+  \subsection{文字列操作}
+  次の詩を例として使う。
+   \begin{lstlisting}
+ >>> poem = '''All that doth flow we cannot liquid name Or else would fire and water be the same; But that is liquid which is moist and wet Fire that property can never get. Then 'tis not cold that doth the fire put out But 'tis the wet that makes it die, no doubt.'''
+   \end{lstlisting}
+  最初の13字（オフセット0から12）を取り出すには、
+ \begin{lstlisting}
+ >>> poem[:13]
+ 'All that doth'
+ \end{lstlisting}
+ とすればよい。\\
+ この詩に含まれる文字数を調べるには、
+ \begin{lstlisting}
+ >>> len(poem)
+250
+ \end{lstlisting}
+ とすればよい。\\
  
+ p.79から
  
 
 \end{document}  
