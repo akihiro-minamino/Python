@@ -423,8 +423,55 @@ Found and signing book deals; Yeti, Bigfoot, Loch Ness Monster
 250
  \end{lstlisting}
  とすればよい。\\
- 
- p.79から
+先頭がAllになっているかを調べるには、
+\begin{lstlisting}
+ >>> poem.startswith('All')
+True
+ \end{lstlisting}
+  とすればよい。\\
+末尾が、\verb|That's all, folks!|になっているかを調べるには、
+\begin{lstlisting}
+ >>> poem.endswith('That\'s all, folks!')
+False
+ \end{lstlisting}
+  とすればよい。\\
+  \verb|the|という単語が最初に現れる箇所のオフセットを調べるには、
+  \begin{lstlisting}
+ >>> word = 'the'
+>>> poem.find(word)
+73
+ \end{lstlisting}
+  とすればよい。\\
+   \verb|the|という単語が最後に現れる箇所のオフセットを調べるには、
+  \begin{lstlisting}
+>>> poem.rfind(word)
+214
+ \end{lstlisting}
+  とすればよい。\\
+     \verb|the|という単語が何回現れているかを調べるには、
+  \begin{lstlisting}
+>>> poem.count(word)
+3
+ \end{lstlisting}
+  とすればよい。\\
+  この詩に含まれる文字がすべて英字か数字であるかを調べるには、
+    \begin{lstlisting}
+>>> poem.isalnum()
+False
+ \end{lstlisting}
+  とすればよい。\\
+  
+   \subsection{大文字と小文字の区別、配置}
+   文字列の両端から\verb|.|を取り除くには、
+\begin{lstlisting}
+>>> setup = 'a duck goes into a bar...'
+>>> setup.strip('.')
+'a duck goes into a bar'
+\end{lstlisting}
+  とすればよい。\\
+  
+  p.80から
+
  
 
 \end{document}  
