@@ -469,9 +469,77 @@ False
 'a duck goes into a bar'
 \end{lstlisting}
   とすればよい。\\
+  先頭の単語をタイトルケース（先頭文字だけ大文字）にするには、
+\begin{lstlisting}
+>>> setup.capitalize()
+'A duck goes into a bar...'
+\end{lstlisting}
+  とすればよい。\\
+ すべての単語をタイトルケースにするには、
+ \begin{lstlisting}
+>>> setup.title()
+'A Duck Goes Into A Bar...'
+\end{lstlisting}
+  とすればよい。\\
+ すべての文字を大文字にするには、
+  \begin{lstlisting}
+>>> setup.upper()
+'A DUCK GOES INTO A BAR...'
+\end{lstlisting}
+  とすればよい。\\
+ すべての文字を小文字にするには、
+  \begin{lstlisting}
+>>> setup.lower()
+'a duck goes into a bar...'
+\end{lstlisting}
+  とすればよい。\\
+  大文字小文字を逆にするには、
+    \begin{lstlisting}
+>>> setup.swapcase()
+'A DUCK GOES INTO A BAR...'
+\end{lstlisting}
+  とすればよい。\\
+  次に文字列のレイアウトを操作する関数を使ってみる。\\
+  30字分のスペースの中央に文字列を配置するには、
+      \begin{lstlisting}
+>>> setup.center(30)
+'  a duck goes into a bar...   '
+\end{lstlisting}
+  とすればよい。\\
+    30字分のスペースの左端に文字列を配置するには、
+      \begin{lstlisting}
+>>> setup.ljust(30)
+'a duck goes into a bar...     '
+\end{lstlisting}
+  とすればよい。\\
+     30字分のスペースの右端に文字列を配置するには、
+      \begin{lstlisting}
+>>> setup.rjust(30)
+'     a duck goes into a bar...'
+\end{lstlisting}
+  とすればよい。\\
   
-  p.80から
+ \subsection{replace()による置換}
+\verb|replace()|を使えば、部分文字列を簡単に書き換えることができる。
+書き換え前後の部分文字列と書き換え回数を指定する。
+書き換え回数を省略すると、置換は一度しか行われない。
+ \begin{lstlisting}
+ >>> setup.replace('duck', 'marmoset')
+'a marmoset goes into a bar...'
+\end{lstlisting}
+次のようにすると、最高で100回置換される。
+ \begin{lstlisting}
+ >>> setup.replace('a ', 'a famous ', 100)
+'a famous duck goes into a famous bar...'
+\end{lstlisting}
+注意すべきは、上記の例では、\verb|'a '|という\verb|a|の後ろにスペースが続く2字の文字列で置換している。
+もし、\verb|'a'|という1字の置換をしてしまうと、他の単語のなかに含まれる\verb|a|も置き換えてしまう。
+\begin{lstlisting}
+ >>> setup.replace('a', 'a famous', 100)
+'a famous duck goes into a famous ba famousr...'
+\end{lstlisting}
 
+p.51から
  
 
 \end{document}  
