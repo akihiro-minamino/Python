@@ -539,7 +539,32 @@ False
 'a famous duck goes into a famous ba famousr...'
 \end{lstlisting}
 
-p.51から
+
+\section{リスト、タプル、辞書、集合}
+\subsection{リスト}
+リストは、要素を順番に管理したいとき、特に順序と内容が変わる場合があるときに向いている。
+リストはミュータブルである。
+つまり、リストの内容は直接変更できる。
+新しい要素を追加したり、既存の要素を削除したり書き換えたりすることができる。
+
+\subsubsection{[]またはlist()による作製}
+リストは、0個以上の要素をそれぞれカンマで区切り、全体を角かっこで囲んで作る。
+\begin{lstlisting}
+ >>> empty_list = []
+>>> weekdays = ['Monday', 'Tuesday', 'Wednesday', 'THursday', 'Friday']
+>>> big_birds =['emu', 'ostrich', 'cassowary']
+>>> first_names = ['Graham', 'John', 'Terry', 'Terry', 'Michael']
+\end{lstlisting}
+\verb|list()|関数で空リストを作ることもできる。
+\begin{lstlisting}
+ >>> another_empty_list = list()
+>>> another_empty_list
+[]
+\end{lstlisting}
+
+p.55から
+
+
  
 
 \end{document}  
